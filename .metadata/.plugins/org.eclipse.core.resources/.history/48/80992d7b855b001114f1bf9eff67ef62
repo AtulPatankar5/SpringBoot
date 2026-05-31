@@ -1,0 +1,3 @@
+spring.application.name=bootJPA
+spring.datasource.name=springBootDB
+spring.datasource.url=jdbc:mysql://localhost:3306/springBootDB

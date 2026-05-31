@@ -1,0 +1,28 @@
+package com.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.demo.dao.UserRepository;
+import com.demo.entities.User;
+
+@SpringBootApplication
+public class BootJpaApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext context = SpringApplication.run(BootJpaApplication.class, args);
+		UserRepository userRepo = context.getBean(UserRepository.class);
+
+		User user = new User();
+		user.setName("Helina");
+		user.setCity("Thailand");
+		user.setStatus("Available");
+
+		User user1 = userRepo.save(user);
+		System.out.println(user1);
+
+	}
+
+}

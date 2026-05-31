@@ -1,0 +1,40 @@
+package com.demo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.demo.dao.UserRepository;
+import com.demo.entities.User;
+
+@SpringBootApplication
+public class BootJpaApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext context = SpringApplication.run(BootJpaApplication.class, args);
+		UserRepository userRepo = context.getBean(UserRepository.class);
+
+		User user1 = new User();
+		user1.setName("Helina");
+		user1.setCity("Thailand");
+		user1.setStatus("Available");
+
+		User user2 = new User();
+		user2.setName("Celena");
+		user2.setCity("Russia");
+		user2.setStatus("Not Available");
+
+		
+		List<User> users = List.of(user1, user2);
+		
+		userRepo.saveAll(users);
+//		User user1 = userRepo.saveAll(null)
+//		System.out.println(user1);
+
+	}
+
+}
