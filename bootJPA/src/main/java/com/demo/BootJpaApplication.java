@@ -64,6 +64,13 @@ public class BootJpaApplication {
 		List<User> users1 = userRepo.findByNameStartingWith("Hel");
 		users1.forEach(u -> System.out.println(u));
 
+		List<User> allUsers = userRepo.getAllUsers();
+		allUsers.forEach(u -> System.out.println("Custom GET:" + u));
+
+		List<User> userByName = userRepo.getUserByName("Helina");
+		userByName.forEach(u -> System.out.println("User by name:  " + u));
+		
+		userRepo.getAllUserNative().forEach(u-> System.out.println("Native: "+u));
 	}
 
 }
